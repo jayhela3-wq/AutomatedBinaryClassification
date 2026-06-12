@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+from analysis import analyze_dataset
+from preprocessing import preprocess_data
+from trainer import train
 
 st.set_page_config(
     page_title = 'Auto Binary Classifier',
@@ -18,20 +21,6 @@ if uploaded_file is not None:
     st.subheader('Dataset Preview')
     st.dataframe(df.head())
 
-    st.subheader('Dataset Information')
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.write('Rows:', df.shape[0])
-
-    with col2:
-        st.write('Columns:', df.shape[1])
-
-    st.subheader('Column Names')
-
-    st.write(list(df.columns))
-
     st.subheader('Select Target Column')
 
     target_column = st.selectbox(
@@ -40,3 +29,22 @@ if uploaded_file is not None:
     )
 
     st.write('Selected Target:', target_column)
+
+    analyze_dataset(df, target_column)
+
+    x, y = preprocess_data(df, target_column)
+
+    st.subheader("Feature Matrix")
+    st.dataframe(x.head())
+
+    st.subheader('Target Matrix')
+    st.dataframe(y.head())
+
+    st.subheader('Preprocessed Features')
+    st.dataframe(x.head())
+    st.write('Remaining missing values:', x.isnull().sum().sum())
+
+    results_df, best_model = train(x, y)
+
+    st.subheader('Model Comparison')
+    st.dataframe(results_df)
