@@ -51,7 +51,7 @@ if uploaded_file is not None:
     st.subheader('Model Comparison')
     st.dataframe(results_df)
 
-    feature_names = joblib.load("feature_names.pkl")
+    feature_names = joblib.load("feature_info.pkl")
 
     st.header("Make Prediction")
 
@@ -60,7 +60,7 @@ if uploaded_file is not None:
     for col in feature_info['numerical_cols']:
         user_input[col] = st.number_input(col)
 
-    for col in feature_info['categorical_col']:
+    for col in feature_info['categorical_cols']:
         user_input[col] = st.text_input(col)
 
     input_df = pd.DataFrame([user_input])

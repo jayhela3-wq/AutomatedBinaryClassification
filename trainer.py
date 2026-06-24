@@ -15,12 +15,12 @@ import joblib
 
 def train(x, y,feature_info):
 
-    numerical_cols = feature_info[numerical_cols]
-    categorical_cols = feature_info[categorical_cols]
+    numerical_cols = feature_info['numerical_cols']
+    categorical_cols = feature_info['categorical_cols']
 
     numeric_pipe = Pipeline([
         ('imputer',SimpleImputer(strategy='median')),
-        ('scaler',StandardScaler)
+        ('scaler',StandardScaler())
     ])
     categorical_pipe = Pipeline([
         ('imputer',SimpleImputer(strategy='most_frequent')),
