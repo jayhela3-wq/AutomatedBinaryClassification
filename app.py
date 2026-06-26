@@ -61,7 +61,7 @@ if uploaded_file is not None:
         user_input[col] = st.number_input(col)
 
     for col in feature_info['categorical_cols']:
-        user_input[col] = st.text_input(col)
+        user_input[col] = st.select_box(label=col, options=feature_info['category_info'][col])
 
     input_df = pd.DataFrame([user_input])
 
