@@ -8,10 +8,15 @@ def preprocess_data(df, target_column):
     numerical_cols = x.select_dtypes(include=['int64','float64']).columns.tolist()
     categorical_cols = x.select_dtypes(include=['object']).columns.tolist()
 
+    category_info = {}
+
+    for col in categorical_cols:
+        category_info[col] = sorted(x[col].dropna().unique().tolist())
+
     feature_info = {
-
         'numerical_cols' : numerical_cols,
-        'categorical_cols': categorical_cols
+        'categorical_cols': categorical_cols,
+        'category_info':category_info
     }
-
+    
     return x, y, feature_info
