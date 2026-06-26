@@ -67,4 +67,4 @@ if uploaded_file is not None:
 
     if st.button('Predict'):
         prediction = predict(input_df)
-        st.success(f"Prediction:{prediction}")
+        st.success(f"Prediction: {prediction}")
