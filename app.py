@@ -42,10 +42,6 @@ if uploaded_file is not None:
     st.subheader('Target Matrix')
     st.dataframe(y.head())
 
-    st.subheader('Preprocessed Features')
-    st.dataframe(x.head())
-    st.write('Remaining missing values:', x.isnull().sum().sum())
-
     results_df = train(x, y, feature_info)
 
     st.subheader('Model Comparison')
