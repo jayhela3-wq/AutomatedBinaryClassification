@@ -4,6 +4,14 @@ An end-to-end Machine Learning web application built using **Python**, **Scikit-
 
 ---
 
+## 🌐 Live Demo
+
+**Streamlit App:**
+https://automatedbinaryclassification-bnxcvoyvdhuvaduwhnbj2z.streamlit.app
+
+---
+
+
 # 🚀 Features
 
 * Upload any binary classification CSV dataset
